@@ -1,0 +1,12 @@
+# IntelliJ
+*.iml
+.idea/
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# Common
+target/
+src/main/java/co/casterlabs/trovoapi/Test.java
