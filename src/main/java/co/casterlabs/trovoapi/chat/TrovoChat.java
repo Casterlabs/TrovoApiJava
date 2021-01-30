@@ -134,8 +134,6 @@ public class TrovoChat implements Closeable {
 
             String type = message.get("type").getAsString();
 
-            System.out.println(message);
-
             if (type.equals("CHAT")) {
                 if (listener != null) {
                     JsonObject data = message.getAsJsonObject("data");
