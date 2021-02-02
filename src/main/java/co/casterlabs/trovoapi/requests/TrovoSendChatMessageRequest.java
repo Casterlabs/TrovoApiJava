@@ -25,7 +25,8 @@ public class TrovoSendChatMessageRequest extends AuthenticatedWebRequest<Void, T
 
     @Override
     protected Void execute() throws ApiException, ApiAuthException, IOException {
-        this.auth.checkScope(TrovoScope.SEND_CHAT_SELF);
+        this.auth.checkScope(TrovoScope.CHAT_SEND_SELF);
+        this.auth.checkScope(TrovoScope.SEND_TO_MY_CHANNEL);
 
         JsonObject body = new JsonObject();
 
