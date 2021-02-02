@@ -8,6 +8,8 @@ import co.casterlabs.trovoapi.chat.TrovoMessageType;
 import co.casterlabs.trovoapi.chat.TrovoRawChatMessage;
 import co.casterlabs.trovoapi.chat.TrovoSpell;
 import co.casterlabs.trovoapi.chat.TrovoSubLevel;
+import co.casterlabs.trovoapi.chat.TrovoUserMedal;
+import co.casterlabs.trovoapi.chat.TrovoUserRoles;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -39,12 +41,20 @@ public class TrovoSpellMessage implements TrovoMessage {
         return this.raw.sub_lv;
     }
 
-    public List<String> getSenderMedals() {
+    public List<TrovoUserMedal> getSenderMedals() {
         return this.raw.medals;
     }
 
-    public List<String> getSenderRoles() {
+    public List<TrovoUserRoles> getSenderRoles() {
         return this.raw.roles;
+    }
+
+    public String getMessageId() {
+        return this.raw.message_id;
+    }
+
+    public String getSenderId() {
+        return this.raw.sender_id;
     }
 
     @Override
