@@ -1,5 +1,8 @@
 # TrovoApiJava
  
+Make sure to read the [wiki pages](https://github.com/Casterlabs/TrovoApiJava/wiki)!  
+<br>
+ 
 ## Adding to your own project
 
 # Maven
