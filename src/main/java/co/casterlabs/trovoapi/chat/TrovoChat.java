@@ -205,8 +205,6 @@ public class TrovoChat implements Closeable {
             TrovoRawChatMessage raw = TrovoApiJava.GSON.fromJson(chat, TrovoRawChatMessage.class);
             TrovoMessageType type = TrovoMessageType.lookup(raw.type);
 
-            raw.avatar = "https://headicon.trovo.live/user/" + raw.avatar;
-
             switch (type) {
                 case CHAT:
                     return new TrovoChatMessage(raw);
