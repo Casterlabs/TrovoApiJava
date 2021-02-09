@@ -80,4 +80,15 @@ public class HttpUtil {
         return json;
     }
 
+    public static Response rawHttpGet(@NonNull String address) throws IOException {
+        Request.Builder builder = new Request.Builder().url(address);
+
+        builder.addHeader("x-client-type", "api");
+
+        Request request = builder.build();
+        Response response = client.newCall(request).execute();
+
+        return response;
+    }
+
 }
