@@ -15,6 +15,10 @@ public class TrovoMagicChatMessage implements TrovoMessage {
     private TrovoRawChatMessage raw;
     private @Getter TrovoMessageType type;
 
+    public String getMessage() {
+        return this.raw.content;
+    }
+
     public String getSenderNickname() {
         return this.raw.nick_name;
     }
