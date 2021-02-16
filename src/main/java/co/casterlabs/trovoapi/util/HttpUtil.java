@@ -18,7 +18,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HttpUtil {
-    private static OkHttpClient client = new OkHttpClient();
+    private static final OkHttpClient client = new OkHttpClient();
 
     public static JsonObject sendHttpGet(@NonNull String address, @Nullable TrovoApplicationAuth auth) throws IOException, ApiAuthException, ApiException {
         return sendHttp(null, null, address, auth);
@@ -82,6 +82,21 @@ public class HttpUtil {
 
     public static Response rawHttpGet(@NonNull String address) throws IOException {
         Request.Builder builder = new Request.Builder().url(address);
+
+        builder.addHeader("x-client-type", "api");
+
+        Request request = builder.build();
+        Response response = client.newCall(request).execute();
+
+        return response;
+    }
+
+    public static Response rawHttpMethod(@NonNull String address, @NonNull String method, @Nullable TrovoApplicationAuth auth) throws IOException {
+        Request.Builder builder = new Request.Builder().url(address).method(method, null);
+
+        if (auth != null) {
+            auth.authenticateRequest(builder);
+        }
 
         builder.addHeader("x-client-type", "api");
 

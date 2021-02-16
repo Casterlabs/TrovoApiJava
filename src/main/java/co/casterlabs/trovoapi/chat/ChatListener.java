@@ -3,6 +3,7 @@ package co.casterlabs.trovoapi.chat;
 import java.util.List;
 
 import co.casterlabs.trovoapi.chat.messages.TrovoChatMessage;
+import co.casterlabs.trovoapi.chat.messages.TrovoCustomSpellMessage;
 import co.casterlabs.trovoapi.chat.messages.TrovoFollowMessage;
 import co.casterlabs.trovoapi.chat.messages.TrovoGiftSubMessage;
 import co.casterlabs.trovoapi.chat.messages.TrovoGiftSubRandomlyMessage;
@@ -65,8 +66,11 @@ public interface ChatListener {
                     this.onWelcome((TrovoWelcomeMessage) message);
                     break;
 
+                case CUSTOM_SPELL:
+                    this.onCustomSpell((TrovoCustomSpellMessage) message);
+                    break;
+
                 case UNKNOWN:
-                default:
                     break;
             }
         }
@@ -87,6 +91,8 @@ public interface ChatListener {
     default void onRaidWelcome(TrovoRaidWelcomeMessage message) {}
 
     default void onSpell(TrovoSpellMessage message) {}
+
+    default void onCustomSpell(TrovoCustomSpellMessage message) {}
 
     default void onSubscription(TrovoSubscriptionMessage message) {}
 

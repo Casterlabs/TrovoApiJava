@@ -19,7 +19,8 @@ public enum TrovoMessageType {
     GIFT_SUB_RANDOM(5005),
     GIFT_SUB_USER(5006),
     PLATFORM_EVENT(5007),
-    RAID_WELCOME(5008);
+    RAID_WELCOME(5008),
+    CUSTOM_SPELL(5009);
 
     private int code;
 

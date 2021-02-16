@@ -10,6 +10,6 @@ public enum TrovoScope {
     CHAT_CONNECT,
     CHAT_SEND_SELF,
     SEND_TO_MY_CHANNEL,
-    // MANAGE_MESSAGES;
+    MANAGE_MESSAGES;
 
 }

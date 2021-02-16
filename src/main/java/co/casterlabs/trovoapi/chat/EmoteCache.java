@@ -63,6 +63,10 @@ public class EmoteCache {
         return messageEmotes;
     }
 
+    public void clear() {
+        this.emotes.clear();
+    }
+
     private String formatLink(String name) {
         if (this.isChannelMode()) {
             return String.format(CHANNEL_EMOTE_FORMAT, this.channelId, name);

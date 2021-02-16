@@ -23,6 +23,7 @@ import co.casterlabs.trovoapi.TrovoApiJava;
 import co.casterlabs.trovoapi.TrovoScope;
 import co.casterlabs.trovoapi.TrovoUserAuth;
 import co.casterlabs.trovoapi.chat.messages.TrovoChatMessage;
+import co.casterlabs.trovoapi.chat.messages.TrovoCustomSpellMessage;
 import co.casterlabs.trovoapi.chat.messages.TrovoFollowMessage;
 import co.casterlabs.trovoapi.chat.messages.TrovoGiftSubMessage;
 import co.casterlabs.trovoapi.chat.messages.TrovoGiftSubRandomlyMessage;
@@ -186,8 +187,11 @@ public class TrovoChat implements Closeable {
                                 listener.onWelcome((TrovoWelcomeMessage) chat);
                                 break;
 
+                            case CUSTOM_SPELL:
+                                listener.onCustomSpell((TrovoCustomSpellMessage) chat);
+                                break;
+
                             case UNKNOWN:
-                            default:
                                 break;
                         }
                     } else {
@@ -242,6 +246,9 @@ public class TrovoChat implements Closeable {
 
                 case WELCOME:
                     return new TrovoWelcomeMessage(raw);
+
+                case CUSTOM_SPELL:
+                    return new TrovoCustomSpellMessage(raw, TrovoApiJava.GSON.fromJson(raw.content, JsonObject.class));
 
                 case UNKNOWN:
                 default:
