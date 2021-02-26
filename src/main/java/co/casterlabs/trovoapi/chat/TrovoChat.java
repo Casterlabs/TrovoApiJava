@@ -37,6 +37,8 @@ import co.casterlabs.trovoapi.chat.messages.TrovoWelcomeMessage;
 import co.casterlabs.trovoapi.util.HttpUtil;
 import lombok.NonNull;
 import lombok.Setter;
+import xyz.e3ndr.fastloggingframework.logging.FastLogger;
+import xyz.e3ndr.fastloggingframework.logging.LogLevel;
 
 public class TrovoChat implements Closeable {
     private static final String CHAT_TOKEN_URL = "https://open-api.trovo.live/openplatform/chat/token";
@@ -132,6 +134,8 @@ public class TrovoChat implements Closeable {
         @Override
         public void onMessage(String raw) {
             JsonObject message = TrovoApiJava.GSON.fromJson(raw, JsonObject.class);
+
+            FastLogger.logStatic(LogLevel.TRACE, raw);
 
             String type = message.get("type").getAsString();
 
