@@ -16,11 +16,13 @@ public class TrovoSendChatMessageRequest extends AuthenticatedWebRequest<Void, T
     public static final String URL = "https://open-api.trovo.live/openplatform/chat/send";
 
     private String message;
+    private String channelId;
 
-    public TrovoSendChatMessageRequest(@NonNull TrovoUserAuth auth, @NonNull String message) {
+    public TrovoSendChatMessageRequest(@NonNull TrovoUserAuth auth, @NonNull String message, @NonNull String channelId) {
         super(auth);
 
         this.message = message;
+        this.channelId = channelId;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class TrovoSendChatMessageRequest extends AuthenticatedWebRequest<Void, T
         JsonObject body = new JsonObject();
 
         body.addProperty("content", this.message);
+        body.addProperty("channel_id", this.channelId);
 
         HttpUtil.sendHttp(body.toString(), URL, this.auth);
 
