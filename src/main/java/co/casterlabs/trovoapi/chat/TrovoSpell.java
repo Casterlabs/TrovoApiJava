@@ -12,6 +12,11 @@ public enum TrovoSpell {
     LOVE_LETTER("https://img.trovo.live/imgupload/shop/20210205_grn7g2e7ix.webp", "Love Letter", 500, TrovoSpellCurrency.ELIXIR),
     CUPID_LEON("https://img.trovo.live/imgupload/shop/20210201_f0vs2h1j9e.webp", "Cupid Leon", 2000, TrovoSpellCurrency.ELIXIR),
     RISE_2021("https://img.trovo.live/imgupload/shop/20201230_a0ggwjtmxhg.webp", "RISE 2021", 5000, TrovoSpellCurrency.ELIXIR),
+    ST_PATRICK("https://img.trovo.live/imgupload/shop/20210312_3guy27m840u.png", "St. Patrick", 1000, TrovoSpellCurrency.MANA),
+
+    BULLSEYE("https://img.trovo.live/imgupload/shop/20210315_a9m7m8c5n1o.png", "Bullseye", 1000, TrovoSpellCurrency.MANA),
+    SUPER_GOOD("https://img.trovo.live/imgupload/shop/20210302_pcidahysz1esupergood.webp", "Super Good", 5000, TrovoSpellCurrency.ELIXIR),
+
     STAY_SAFE("https://static.trovo.live/imgupload/shop/20200421_tyxzwfzebxbhelmet.png", "Stay Safe", 100, TrovoSpellCurrency.MANA),
     ON_FIRE("https://static.trovo.live/imgupload/shop/20200610_4ig5dz712a20200610_i74sm6yafscannon2.png", "On Fire", 500, TrovoSpellCurrency.MANA),
     ROSE("https://static.trovo.live/imgupload/shop/20200509_qnxz9b28xqt.webp", "Rose", 5, TrovoSpellCurrency.ELIXIR),
