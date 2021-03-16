@@ -11,18 +11,20 @@ import co.casterlabs.trovoapi.TrovoScope;
 import co.casterlabs.trovoapi.TrovoUserAuth;
 import co.casterlabs.trovoapi.util.HttpUtil;
 import lombok.NonNull;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
+@Accessors(chain = true)
 public class TrovoSendChatMessageRequest extends AuthenticatedWebRequest<Void, TrovoUserAuth> {
     public static final String URL = "https://open-api.trovo.live/openplatform/chat/send";
 
     private String message;
-    private String channelId;
+    private @Setter String channelId;
 
-    public TrovoSendChatMessageRequest(@NonNull TrovoUserAuth auth, @NonNull String message, @NonNull String channelId) {
+    public TrovoSendChatMessageRequest(@NonNull TrovoUserAuth auth, @NonNull String message) {
         super(auth);
 
         this.message = message;
-        this.channelId = channelId;
     }
 
     @Override
@@ -33,7 +35,10 @@ public class TrovoSendChatMessageRequest extends AuthenticatedWebRequest<Void, T
         JsonObject body = new JsonObject();
 
         body.addProperty("content", this.message);
-        body.addProperty("channel_id", this.channelId);
+
+        if (this.channelId != null) {
+            body.addProperty("channel_id", this.channelId);
+        }
 
         HttpUtil.sendHttp(body.toString(), URL, this.auth);
 
