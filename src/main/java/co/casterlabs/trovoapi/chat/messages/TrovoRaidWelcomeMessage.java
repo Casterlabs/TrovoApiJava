@@ -46,4 +46,9 @@ public class TrovoRaidWelcomeMessage implements TrovoMessage {
         return TrovoMessageType.RAID_WELCOME;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

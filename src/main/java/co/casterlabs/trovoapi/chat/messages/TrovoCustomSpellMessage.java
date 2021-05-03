@@ -67,4 +67,9 @@ public class TrovoCustomSpellMessage implements TrovoMessage {
         return TrovoMessageType.CUSTOM_SPELL;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

@@ -50,4 +50,9 @@ public class TrovoChatMessage implements TrovoMessage {
         return TrovoMessageType.CHAT;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

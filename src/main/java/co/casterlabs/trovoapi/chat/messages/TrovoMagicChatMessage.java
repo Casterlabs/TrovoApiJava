@@ -47,4 +47,9 @@ public class TrovoMagicChatMessage implements TrovoMessage {
         return this.raw.sender_id;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

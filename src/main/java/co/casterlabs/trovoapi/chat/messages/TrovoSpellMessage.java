@@ -18,7 +18,7 @@ public class TrovoSpellMessage implements TrovoMessage {
     private JsonObject content;
 
     public TrovoSpell getSpell() {
-        return TrovoSpell.valueOf(this.content.get("gift").getAsString().toUpperCase().replace(' ', '_'));
+        return TrovoSpell.get(this.getGift());
     }
 
     public String getGift() {
@@ -60,6 +60,11 @@ public class TrovoSpellMessage implements TrovoMessage {
     @Override
     public TrovoMessageType getType() {
         return TrovoMessageType.SPELL;
+    }
+
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
     }
 
 }

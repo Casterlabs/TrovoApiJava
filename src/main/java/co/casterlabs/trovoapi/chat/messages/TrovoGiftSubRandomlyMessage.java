@@ -46,4 +46,9 @@ public class TrovoGiftSubRandomlyMessage implements TrovoMessage {
         return TrovoMessageType.GIFT_SUB_RANDOM;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

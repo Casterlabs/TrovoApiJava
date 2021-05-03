@@ -42,4 +42,9 @@ public class TrovoSubscriptionMessage implements TrovoMessage {
         return TrovoMessageType.SUBSCRIPTION;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

@@ -6,4 +6,6 @@ public interface TrovoMessage {
 
     public TrovoMessageType getType();
 
+    public boolean isCatchup();
+
 }

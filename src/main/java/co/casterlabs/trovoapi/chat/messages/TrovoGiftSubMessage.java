@@ -46,4 +46,9 @@ public class TrovoGiftSubMessage implements TrovoMessage {
         return TrovoMessageType.GIFT_SUB_USER;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

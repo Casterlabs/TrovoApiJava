@@ -42,4 +42,9 @@ public class TrovoFollowMessage implements TrovoMessage {
         return TrovoMessageType.FOLLOW;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

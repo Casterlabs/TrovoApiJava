@@ -17,4 +17,9 @@ public class TrovoPlatformEventMessage implements TrovoMessage {
         return TrovoMessageType.PLATFORM_EVENT;
     }
 
+    @Override
+    public boolean isCatchup() {
+        return this.raw.is_catchup;
+    }
+
 }

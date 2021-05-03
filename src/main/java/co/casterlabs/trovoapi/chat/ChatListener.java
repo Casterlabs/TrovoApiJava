@@ -17,8 +17,6 @@ import co.casterlabs.trovoapi.chat.messages.TrovoWelcomeMessage;
 
 public interface ChatListener {
 
-    default void onOpen() {}
-
     // Usually a bunch of messages means it's the chat history.
     default void onBatchMessages(List<TrovoMessage> messages) {
         for (TrovoMessage message : messages) {
@@ -75,6 +73,8 @@ public interface ChatListener {
             }
         }
     }
+
+    default void onOpen() {}
 
     default void onChatMessage(TrovoChatMessage message) {}
 
