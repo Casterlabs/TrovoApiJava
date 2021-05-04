@@ -142,12 +142,14 @@ public class TrovoChat implements Closeable {
                     JsonObject data = message.getAsJsonObject("data");
                     JsonArray chats = data.getAsJsonArray("chats");
 
-                    boolean isCatchup = chats.size() > 1;
+                    if (chats != null) {
+                        boolean isCatchup = chats.size() > 1;
 
-                    for (JsonElement e : chats) {
-                        TrovoMessage chat = this.parseChat(e.getAsJsonObject(), isCatchup);
+                        for (JsonElement e : chats) {
+                            TrovoMessage chat = this.parseChat(e.getAsJsonObject(), isCatchup);
 
-                        this.fireListener(chat);
+                            this.fireListener(chat);
+                        }
                     }
                 }
             }
