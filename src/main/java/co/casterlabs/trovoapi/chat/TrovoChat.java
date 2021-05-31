@@ -63,27 +63,39 @@ public class TrovoChat implements Closeable {
     }
 
     public void connect() {
-        if (this.conn.getReadyState() == ReadyState.NOT_YET_CONNECTED) {
-            this.conn.connect();
-        } else {
-            this.conn.reconnect();
+        if (!this.isOpen()) {
+            if (this.conn.getReadyState() == ReadyState.NOT_YET_CONNECTED) {
+                this.conn.connect();
+            } else {
+                this.conn.reconnect();
+            }
         }
     }
 
     public void connectBlocking() throws InterruptedException {
-        if (this.conn.getReadyState() == ReadyState.NOT_YET_CONNECTED) {
-            this.conn.connectBlocking();
-        } else {
-            this.conn.reconnectBlocking();
+        if (!this.isOpen()) {
+            if (this.conn.getReadyState() == ReadyState.NOT_YET_CONNECTED) {
+                this.conn.connectBlocking();
+            } else {
+                this.conn.reconnectBlocking();
+            }
         }
     }
 
+    public boolean isOpen() {
+        return this.conn.isOpen();
+    }
+
     public void disconnect() {
-        this.conn.close();
+        if (this.isOpen()) {
+            this.conn.close();
+        }
     }
 
     public void disconnectBlocking() throws InterruptedException {
-        this.conn.closeBlocking();
+        if (this.isOpen()) {
+            this.conn.closeBlocking();
+        }
     }
 
     private class Connection extends WebSocketClient {
