@@ -215,7 +215,7 @@ public class TrovoChat implements Closeable {
 
             raw.is_catchup = isCatchup;
 
-            if (!raw.avatar.contains("://")) {
+            if ((raw.avatar != null) && !raw.avatar.contains("://")) {
                 raw.avatar = "https://headicon.trovo.live/user/" + raw.avatar; // Damn you Trovo.
             }
 
