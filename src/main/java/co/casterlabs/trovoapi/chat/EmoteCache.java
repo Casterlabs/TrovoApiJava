@@ -41,11 +41,7 @@ public class EmoteCache {
             if (cachedResult == null) {
                 String formattedLink = this.formatLink(name);
 
-                try {
-                    Response response = HttpUtil.rawHttpGet(formattedLink);
-
-                    response.close();
-
+                try (Response response = HttpUtil.rawHttpGet(formattedLink)) {
                     if (response.isSuccessful()) {
                         this.emotes.put(name, EmoteResult.VALID);
                         messageEmotes.put(emote, formattedLink);

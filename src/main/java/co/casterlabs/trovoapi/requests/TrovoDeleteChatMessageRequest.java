@@ -29,7 +29,7 @@ public class TrovoDeleteChatMessageRequest extends AuthenticatedWebRequest<Void,
     protected Void execute() throws ApiException, ApiAuthException, IOException {
         this.auth.checkScope(TrovoScope.MANAGE_MESSAGES);
 
-        HttpUtil.rawHttpMethod(String.format(URL, this.channelId, this.messageId, this.senderId), "DELETE", this.auth);
+        HttpUtil.rawHttpMethod(String.format(URL, this.channelId, this.messageId, this.senderId), "DELETE", this.auth).close();
 
         return null;
     }

@@ -57,27 +57,28 @@ public class HttpUtil {
         builder.addHeader("x-client-type", "api");
 
         Request request = builder.build();
-        Response response = client.newCall(request).execute();
 
-        String responseBody = response.body().string();
+        try (Response response = client.newCall(request).execute()) {
+            String responseBody = response.body().string();
 
-        response.close();
+            response.close();
 
-        JsonObject json = TrovoApiJava.GSON.fromJson(responseBody, JsonObject.class);
+            JsonObject json = TrovoApiJava.GSON.fromJson(responseBody, JsonObject.class);
 
-        if (json.has("status")) {
-            int status = json.get("status").getAsInt();
+            if (json.has("status")) {
+                int status = json.get("status").getAsInt();
 
-            String reason = String.format("%s: %s", json.get("error").getAsString(), json.get("message").getAsString());
+                String reason = String.format("%s: %s", json.get("error").getAsString(), json.get("message").getAsString());
 
-            if (status == 11704) {
-                throw new ApiAuthException(reason);
-            } else {
-                throw new ApiException(reason);
+                if (status == 11704) {
+                    throw new ApiAuthException(reason);
+                } else {
+                    throw new ApiException(reason);
+                }
             }
-        }
 
-        return json;
+            return json;
+        }
     }
 
     public static Response rawHttpGet(@NonNull String address) throws IOException {
@@ -86,6 +87,7 @@ public class HttpUtil {
         builder.addHeader("x-client-type", "api");
 
         Request request = builder.build();
+
         Response response = client.newCall(request).execute();
 
         return response;
@@ -101,6 +103,7 @@ public class HttpUtil {
         builder.addHeader("x-client-type", "api");
 
         Request request = builder.build();
+
         Response response = client.newCall(request).execute();
 
         return response;
